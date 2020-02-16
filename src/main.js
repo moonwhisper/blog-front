@@ -23,7 +23,7 @@ Vue.use(VueResource)
 
 Vue.http.options.root = 'http://localhost:9000'
 // 全局设置 发送 post 请求的时候， 表单数据格式组织形式  { emulateJSON: true }
-Vue.http.options.emulateJSON = true
+Vue.http.options.emulateJSON = false
 
 new Vue({
   router,
