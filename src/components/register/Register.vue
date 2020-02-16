@@ -1,66 +1,82 @@
 <template>
     <div class="register-container">
-        <div class="username-item">
-            <label class="username-label">用户名</label>
-            <div class="username-area">
-                <input type="text" class="username-content" v-model="username" ref="username_input"  @blur="inputCheck($event)" @focus="initInputTip($event)"/>
-                <label class="username-tip" v-text="usernametip" ref="username_tip_label"></label>
+        <div class="user-name-item">
+            <label class="user-name-label">用户名</label>
+            <div class="user-name-area">
+                <label>
+                    <input type="text" class="user-name-content" v-model="userName" ref="user_name_input"  @blur="inputCheck($event)" @focus="initInputTip($event)"/>
+                </label>
+                <label class="user-name-tip" ref="user_name_tip_label">{{ userNameTip }}</label>
             </div>
         </div>
 
         <div class="email-item">
             <label class="email-label">邮箱地址</label>
             <div class="email-area">
-                <input type="text" class="email-content" v-model="email" ref="email_input" @blur="inputCheck($event)"/>
-                <label class="email-tip" v-text="emailtip" ref="email_tip_label"></label>
+                <label>
+                    <input type="text" class="email-content" v-model="email" ref="email_input" @blur="inputCheck($event)"/>
+                </label>
+                <label class="email-tip" ref="email_tip_label">{{ emailTip }}</label>
             </div>
         </div>
 
-        <div class="realname-item">
-            <label class="realname-label">姓名</label>
-            <div class="realname-area">
-                <input type="text" class="realname-content" v-model="realname" ref="realname_input" @blur="inputCheck($event)"/>
-                <label class="realname-tip" v-text="realnametip" ref="realname_tip_label"></label>
+        <div class="real-name-item">
+            <label class="real-name-label">姓名</label>
+            <div class="real-name-area">
+                <label>
+                    <input type="text" class="real-name-content" v-model="realName" ref="real_name_input" @blur="inputCheck($event)"/>
+                </label>
+                <label class="real-name-tip" ref="real_name_tip_label">{{ realNameTip }}</label>
             </div>
         </div>
 
         <div class="telephone-item">
             <label class="telephone-label">手机号码</label>
             <div class="telephone-area">
-                <input type="text" class="telephone-content" v-model="telephone" ref="telephone_input" @blur="inputCheck($event)"/>
-                <label class="telephone-tip" v-text="telephonetip" ref="telephone_tip_label"></label>
+                <label>
+                    <input type="text" class="telephone-content" v-model="telephone" ref="telephone_input" @blur="inputCheck($event)"/>
+                </label>
+                <label class="telephone-tip" ref="telephone_tip_label">{{ telephoneTip }}</label>
             </div>
         </div>
 
         <div class="birthday-item">
             <label class="birthday-label">出生日期</label>
             <div class="birthday-area">
-                <input type="text" class="birthday-content" v-model="birthday" ref="birthday_input" @blur="inputCheck($event)"/>
-                <label class="birthday-tip" v-text="birthdaytip" ref="birthday_tip_label"></label>
+                <label>
+                    <input type="text" class="birthday-content" v-model="birthday" ref="birthday_input" @blur="inputCheck($event)"/>
+                </label>
+                <label class="birthday-tip" ref="birthday_tip_label">{{ birthdayTip }}</label>
             </div>
         </div>
 
         <div class="password-item">
             <label class="password-label">密码</label>
             <div class="password-area">
-                <input type="text" class="password-content" v-model="password" ref="password_input" @blur="inputCheck($event)"/>
-                <label class="password-tip" v-text="passwordtip" ref="password_tip_label"></label>
+                <label>
+                    <input type="text" class="password-content" v-model="password" ref="password_input" @blur="inputCheck($event)"/>
+                </label>
+                <label class="password-tip" ref="password_tip_label">{{ passwordTip }}</label>
             </div>
         </div>
 
         <div class="confirm-password-item">
             <label class="confirm-password-label">确认密码</label>
             <div class="confirm-password-area">
-                <input type="text" class="confirm-password-content" v-model="confirmpassword" ref="confirm_password_input" @blur="inputCheck($event)"/>
-                <label class="confirm-password-tip" v-text="confirmpasswordtip" ref="confirm_password_tip_label"></label>
+                <label>
+                    <input type="text" class="confirm-password-content" v-model="confirmPassword" ref="confirm_password_input" @blur="inputCheck($event)"/>
+                </label>
+                <label class="confirm-password-tip" ref="confirm_password_tip_label">{{ confirmPasswordTip }}</label>
             </div>
         </div>
 
         <div class="captcha-item">
             <label class="captcha-label">验证码</label>
             <div class="captcha-area">
-                <input type="text" class="captcha-content" v-model="captcha"/>
-                <label class="captcha-tip" v-text="captchatip"></label>
+                <label>
+                    <input type="text" class="captcha-content" v-model="captcha" ref="captcha_input"/>
+                </label>
+                <label class="captcha-tip" ref="captcha_tip_label">{{ captchaTip }}</label>
             </div>
         </div>
 
@@ -78,41 +94,41 @@
         name: "Register",
         data() {
             return {
-                username: '',
+                userName: '',
                 email: '',
-                realname: '',
+                realName: '',
                 telephone: '',
                 birthday: '',
                 password: '',
-                confirmpassword: '',
+                confirmPassword: '',
                 captcha: '',
 
-                usernametip: '6~18个字符，可使用字母、数字、下划线，需以字母开头',
-                emailtip: '请输入合法邮箱地址',
-                realnametip: '请输入中文姓名',
-                telephonetip: '请输入11位手机号',
-                birthdaytip: '如： 1991-01-01',
-                passwordtip: '6~16个字符，区分大小写',
-                confirmpasswordtip: '请再次填写密码',
-                captchatip: '请输入验证码: 0510',
+                userNameTip: '6~18个字符，可使用字母、数字、下划线，需以字母开头',
+                emailTip: '请输入合法邮箱地址',
+                realNameTip: '请输入中文姓名',
+                telephoneTip: '请输入11位手机号',
+                birthdayTip: '如： 1991-01-01',
+                passwordTip: '6~16个字符，区分大小写',
+                confirmPasswordTip: '请再次填写密码',
+                captchaTip: '请输入验证码: 0510',
 
-                initusernametip: '6~18个字符，可使用字母、数字、下划线，需以字母开头',
-                initemailtip: '请输入合法邮箱地址',
-                initrealnametip: '请输入中文姓名',
-                inittelephonetip: '请输入11位手机号',
-                initbirthdaytip: '如： 1991-01-01',
-                initpasswordtip: '6~16个字符，区分大小写',
-                initconfirmpasswordtip: '请再次填写密码',
-                initcaptchatip: '请输入验证码: 0510',
+                initUserNameTip: '6~18个字符，可使用字母、数字、下划线，需以字母开头',
+                initEmailTip: '请输入合法邮箱地址',
+                initRealNameTip: '请输入中文姓名',
+                initTelephoneTip: '请输入11位手机号',
+                initBirthdayTip: '如： 1991-01-01',
+                initPasswordTip: '6~16个字符，区分大小写',
+                initConfirmPasswordTip: '请再次填写密码',
+                initCaptchaTip: '请输入验证码: 0510',
 
-                usernamecheckflag: false,
-                emailcheckflag: false,
-                realnamecheckflag: false,
-                telephonecheckflag: false,
-                birthdaycheckflag: false,
-                passwordcheckflag: false,
-                confirmpasswordcheckflag: false,
-                captchacheckflag: false
+                userNameCheckFlag: false,
+                emailCheckFlag: false,
+                realNameCheckFlag: false,
+                telephoneCheckFlag: false,
+                birthdayCheckFlag: false,
+                passwordCheckFlag: false,
+                confirmPasswordCheckFlag: false,
+                captchaCheckFlag: false
             }
         },
         methods: {
@@ -122,9 +138,9 @@
 
                 // 提交注册请求给后台
                 var user = {
-                    username: this.username,
+                    userName: this.userName,
                     password: this.password,
-                    realname: this.realname,
+                    realName: this.realName,
                     email: this.email,
                     telephone: this.telephone,
                     birthday: this.birthday
@@ -141,31 +157,31 @@
 
                 // todo 规范化变量命名
                 //如果对应的是用户名的输入框
-                if(event.currentTarget == this.$refs.username_input) {
-                    this.username = this.username.trim()
+                if(event.currentTarget === this.$refs.user_name_input) {
+                    this.userName = this.userName.trim();
 
-                    if(this.username.length < 6 || this.username.length > 18) {
-                        this.usernametip = "用户名长度错误"
-                        this.$refs.username_tip_label.style.color = "red"
+                    if(this.userName.length < 6 || this.userName.length > 18) {
+                        this.userNameTip = "用户名长度错误";
+                        this.$refs.user_name_tip_label.style.color = "red";
                         return
                     } else {
-                        var reg1 = /[A-Za-z]/
-                        var reg2 = /^[0-9a-zA-Z_]{1,}$/
+                        var reg1 = /[A-Za-z]/;
+                        var reg2 = /^[0-9a-zA-Z_]{1,}$/;
 
-                        if(!reg1.test(this.username.substr(0, 1))) {
-                            this.usernametip = "第一个字符必须是字母"
-                            this.$refs.username_tip_label.style.color = "red"
+                        if(!reg1.test(this.userName.substr(0, 1))) {
+                            this.userNameTip = "第一个字符必须是字母";
+                            this.$refs.user_name_tip_label.style.color = "red";
                             return
                         }
 
-                        if(!reg2.test(this.username)) {
-                            this.usernametip = "用户名只能是字母、数字或下划线的组合"
-                            this.$refs.username_tip_label.style.color = "red"
+                        if(!reg2.test(this.userName)) {
+                            this.userNameTip = "用户名只能是字母、数字或下划线的组合";
+                            this.$refs.user_name_tip_label.style.color = "red";
                             return
                         }
                     }
 
-                    this.usernamecheckflag = true
+                    this.userNameCheckFlag = true;
                     return
                 }
 
@@ -174,10 +190,10 @@
             // 输入框获取焦点时，重新初始化输入提示
             initInputTip(event) {
               //如果对应的是用户名的输入框
-              if(event.currentTarget == this.$refs.username_input) {
-                  this.usernametip = this.initusernametip
-                  this.$refs.username_tip_label.style.color = "gray"
-                  this.usernamecheckflag = false
+              if(event.currentTarget === this.$refs.user_name_input) {
+                  this.userNameTip = this.initUserNameTip;
+                  this.$refs.user_name_tip_label.style.color = "gray";
+                  this.userNameCheckFlag = false;
                   return
               }
 
@@ -199,13 +215,13 @@
         left: 50%;
         transform: translate(-50%, 0);
 
-        .username-item {
-            margin: 10px 0px;
+        .user-name-item {
+            margin-bottom: 30px;
             height: 30px;
             display: flex;
             justify-content: space-between;
 
-            .username-label{
+            .user-name-label{
                 line-height: 30px;
                 display: inline-block;
                 width: 100px;
@@ -215,18 +231,18 @@
                 margin-right: 10px;
             }
 
-            .username-area{
+            .user-name-area{
                 display: flex;
                 flex-direction: column;
                 text-align: left;
 
-                .username-content{
+                .user-name-content{
                     width: 350px;
                     line-height: 25px;
                     font-size: 14px;
                 }
 
-                .username-tip{
+                .user-name-tip{
                     font-size: 12px;
                     color: gray;
                 }
@@ -236,7 +252,7 @@
 
 
         .email-item {
-            margin: 30px 0px;
+            margin-bottom: 30px;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -270,13 +286,13 @@
         }
 
 
-        .realname-item {
-            margin: 30px 0px;
+        .real-name-item {
+            margin-bottom: 30px;
             height: 30px;
             display: flex;
             justify-content: space-between;
 
-            .realname-label{
+            .real-name-label{
                 line-height: 30px;
                 display: inline-block;
                 width: 100px;
@@ -286,18 +302,18 @@
                 margin-right: 10px;
             }
 
-            .realname-area{
+            .real-name-area{
                 display: flex;
                 flex-direction: column;
                 text-align: left;
 
-                .realname-content{
+                .real-name-content{
                     width: 350px;
                     line-height: 25px;
                     font-size: 14px;
                 }
 
-                .realname-tip{
+                .real-name-tip{
                     font-size: 12px;
                     color: gray;
                 }
@@ -306,7 +322,7 @@
 
 
         .telephone-item {
-            margin: 30px 0px;
+            margin-bottom: 30px;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -341,7 +357,7 @@
 
 
         .birthday-item {
-            margin: 30px 0px;
+            margin-bottom: 30px;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -376,7 +392,7 @@
 
 
         .password-item {
-            margin: 30px 0px;
+            margin-bottom: 30px;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -411,7 +427,7 @@
 
 
         .confirm-password-item {
-            margin: 30px 0px;
+            margin-bottom: 30px;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -446,7 +462,7 @@
 
 
         .captcha-item {
-            margin: 30px 0px;
+            margin-bottom: 30px;
             height: 30px;
             display: flex;
             justify-content: space-between;

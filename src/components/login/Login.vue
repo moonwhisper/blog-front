@@ -2,9 +2,9 @@
 
     <div class="outer">
         <div class="login-container">
-            <div class="username">
+            <div class="user-name">
                 <label class="label-username">用户名</label>
-                <input type="text" class="username-content" v-model="username" placeholder="邮箱账号或手机号码"/>
+                <input type="text" class="username-content" v-model="userName" placeholder="邮箱账号或手机号码"/>
             </div>
             <div class="password">
                 <label class="label-password">密码</label>
@@ -13,7 +13,6 @@
             <div class="login-or-register">
                 <mt-button class="login-btn" type="primary" size="small" @click="login">登录</mt-button>
                 <router-link class="register" to="/register">新用户注册</router-link>
-                <!--            <mt-button class="register-btn" type="danger" size="small" plain>注册新账号</mt-button>-->
             </div>
         </div>
     </div>
@@ -26,30 +25,30 @@
         name: "Login",
         data() {
             return {
-                username: '',
+                userName: '',
                 password: '',
-                userinfo: ''
+                userInfo: ''
             }
         },
         methods: {
             login() {
-                this.username = this.username.trim()
-                this.password = this.password.trim()
+                this.userName = this.userName.trim();
+                this.password = this.password.trim();
 
-                if( this.username === '' || this.password === '') {
+                if( this.userName === '' || this.password === '') {
                     Toast('用户名或密码不能为空')
                 } else {
-                    this.$http.get('blog/user/login/' + this.username + '/' + this.password).then( result => {
-                        if(result.status == 200) {
-                            var data = result.body
+                    this.$http.get('blog/user/login/' + this.userName + '/' + this.password).then( result => {
+                        if(result.status === 200) {
+                            let data = result.body;
 
                             if(data.status === 0) {
-                                this.userinfo = data.message
+                                this.userInfo = data.message;
                             } else {
-                                Toast(data.message)
+                                Toast(data.message);
                             }
                         } else {
-                            Toast('从后台获取用户信息失败')
+                            Toast('从后台获取用户信息失败');
                         }
                     })
                 }
@@ -76,8 +75,8 @@
         left: 50%;
         transform: translate(-50%, -50%);
 
-        .username{
-            margin: 10px 0px;
+        .user-name{
+            margin-bottom: 10px;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -98,7 +97,7 @@
         }
 
         .password{
-            margin: 10px 0px;
+            margin-bottom: 10px;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -120,20 +119,13 @@
 
         .login-or-register{
             text-align: right;
-            margin: 30px 0px;
+            margin-top: 30px;
 
-            /*.register-btn{*/
-            /*    margin-left: 15px;*/
-            /*}*/
             .register{
                 position: relative;
                 margin-left: 20px;
                 font-size: 13px;
-                bottom: 0px;
             }
         }
-
-
-        }
-
+    }
 </style>
