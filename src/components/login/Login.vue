@@ -36,7 +36,10 @@
                 this.password = this.password.trim();
 
                 if( this.userName === '' || this.password === '') {
-                    Toast('用户名或密码不能为空')
+                    Toast({
+                        message: '用户名或密码不能为空',
+                        duration: 3000
+                    })
                 } else {
                     this.$http.get('blog/user/login/' + this.userName + '/' + this.password).then( result => {
                         if(result.status === 200) {
@@ -45,10 +48,16 @@
                             if(data.status === 0) {
                                 this.userInfo = data.message;
                             } else {
-                                Toast(data.message);
+                                Toast({
+                                    message: data.message,
+                                    duration: 3000
+                                });
                             }
                         } else {
-                            Toast('从后台获取用户信息失败');
+                            Toast({
+                                message: '从后台获取用户信息失败',
+                                duration: 3000
+                            });
                         }
                     })
                 }
