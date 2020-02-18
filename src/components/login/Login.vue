@@ -47,6 +47,12 @@
 
                             if(data.status === 0) {
                                 this.userInfo = data.message;
+
+                                let birthday = this.dateFormat('yyyy-MM-dd', new Date(this.userInfo.birthday));
+                                this.userInfo.birthday = birthday;
+
+                                // 登录成功后，记录用户的信息到vuex
+                                this.$store.commit('initUserInfo', this.userInfo);
                             } else {
                                 Toast({
                                     message: data.message,
